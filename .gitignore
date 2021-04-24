@@ -6,3 +6,5 @@ yarn-error.log
 .idea
 out
 docs/venv
+**/cache
+examples/yarn.lock

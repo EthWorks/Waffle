@@ -12,9 +12,9 @@
     "lint:fix": "eslint --fix '{src,test}/**/*.ts'"
   },
   "devDependencies": {
-    "@ethereum-waffle/chai": "^3.2.2",
-    "@ethereum-waffle/compiler": "^3.2.2",
-    "@ethereum-waffle/provider": "^3.2.2",
+    "@ethereum-waffle/chai": "^3.3.2",
+    "@ethereum-waffle/compiler": "^3.3.1",
+    "@ethereum-waffle/provider": "^3.3.2",
     "ethers": "^5.0.1"
   }
 }

@@ -51,8 +51,8 @@
     "typechain": "^3.0.0"
   },
   "devDependencies": {
-    "@ethereum-waffle/chai": "^3.3.1",
-    "@ethereum-waffle/provider": "^3.3.1",
+    "@ethereum-waffle/chai": "^3.3.2",
+    "@ethereum-waffle/provider": "^3.3.2",
     "@openzeppelin/contracts": "3.0.1",
     "@types/fs-extra": "^9.0.4",
     "fs-extra": "^9.0.1",

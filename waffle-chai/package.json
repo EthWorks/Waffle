@@ -1,7 +1,7 @@
 {
   "name": "@ethereum-waffle/chai",
   "description": "A sweet set of chai matchers for your blockchain testing needs.",
-  "version": "3.3.1",
+  "version": "3.3.2",
   "author": "Marek Kirejczyk <account@ethworks.io> (http://ethworks.io)",
   "repository": "git@github.com:EthWorks/Waffle.git",
   "private": false,
@@ -38,7 +38,7 @@
     "node": ">=10.0"
   },
   "dependencies": {
-    "@ethereum-waffle/provider": "^3.3.1",
+    "@ethereum-waffle/provider": "^3.3.2",
     "ethers": "^5.0.0"
   },
   "devDependencies": {}
