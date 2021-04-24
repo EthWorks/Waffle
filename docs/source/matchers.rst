@@ -57,6 +57,29 @@ Testing with indexed bytes or string parameters. These two examples are equivale
     .to.emit(contract, 'AddAddress')
     .withArgs(hashedStreet, hashedCity);
 
+Testing the argument names in the event.
+
+.. code-block:: ts
+
+  await expect(token.transfer(walletTo.address, 7))
+    .to.emit(token, 'Transfer')
+    .withNamedArgs({
+      from: wallet.address,
+      to: walletTo.address,
+      amount: 7
+    });
+
+
+A subset of arguments in an event can be tested by only including the desired arguments:
+
+.. code-block:: ts
+
+  await expect(token.transfer(walletTo.address, "8000000000000000000"))
+    .to.emit(token, 'Transfer')
+    .withNamedArgs({
+      amount: "8000000000000000000"
+    });
+
 Called on contract
 ------------------
 
