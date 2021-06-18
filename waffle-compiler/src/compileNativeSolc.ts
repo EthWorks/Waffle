@@ -14,7 +14,7 @@ export function compileNativeSolc(config: Config) {
 }
 
 export function createBuildCommand(config: Config) {
-  const command = 'solc';
+  const command = (config.compilerVersion === 'default') ? 'solc' : config.compilerVersion;
   const params = '--standard-json';
   const customAllowedPaths = config.compilerAllowedPaths
     .map((path: string) => resolve(path));

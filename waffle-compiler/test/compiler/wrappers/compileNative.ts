@@ -19,6 +19,16 @@ describe('UNIT: compileNative', () => {
     expect(actualCommand).to.match(new RegExp(expectedCommand));
   });
 
+  it('buildCommand with custom compiler', async () => {
+    const actualCommand = createBuildCommand({
+      ...config,
+      compilerVersion: 'solc-0.8.0'
+    });
+    const expectedCommand = 'solc-0.8.0 --standard-json --allow-paths ' +
+      '.*test/projects/custom/custom_contracts,.*/test/projects/custom/custom_node_modules';
+    expect(actualCommand).to.match(new RegExp(expectedCommand));
+  });
+
   it('buildCommand with custom allow_paths', async () => {
     const actualCommand = createBuildCommand({
       ...config,
