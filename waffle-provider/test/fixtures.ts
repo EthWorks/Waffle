@@ -4,7 +4,7 @@ import {MockProvider, loadFixture, createFixtureLoader} from '../src';
 import {TOKEN_ABI, TOKEN_BYTECODE} from './BasicToken';
 
 describe('Integration: Fixtures', () => {
-  describe('correctly restores state', () => {
+  describe('correctly restores blockchain state', () => {
     async function tokenFixture([sender, recipient]: Wallet[], provider: MockProvider) {
       const factory = new ContractFactory(TOKEN_ABI, TOKEN_BYTECODE, sender);
       return {
@@ -141,5 +141,23 @@ describe('Integration: Fixtures', () => {
 
     expect(receivedProvider).to.equal(customProvider);
     expect(receivedWallets).to.equal(customWallets);
+  });
+
+  it('provider internal state is aligned in order to simulate provider snapshot', async () => {
+    const fixture = async (wallets: Wallet[], provider: MockProvider) => {
+      const [owner, target] = wallets;
+      await owner.sendTransaction({value: '0x1', to: target.address});
+      return {owner, target, provider};
+    };
+
+    const fixtureA = await loadFixture(fixture);
+
+    expect(await fixtureA.provider.getBlockNumber()).to.equal(1);
+    await fixtureA.owner.sendTransaction({value: '0x2', to: fixtureA.target.address});
+    expect(await fixtureA.provider.getBlockNumber()).to.equal(2);
+
+    const fixtureB = await loadFixture(fixture);
+
+    expect(await fixtureB.provider.getBlockNumber()).to.equal(1);
   });
 });
