@@ -130,6 +130,16 @@ describe('INTEGRATION: Events', () => {
       );
   });
 
+  it('Event with proper args from nested', async () => {
+    await expect(events.emitNested())
+      .to.emit(events, 'One')
+      .withArgs(
+        1,
+        'One',
+        '0x00cfbbaf7ddb3a1476767101c12a0162e241fbad2a0162e2410cfbbaf7162123'
+      );
+  })
+
   it('Event with not enough args', async () => {
     await expect(
       expect(events.emitOne()).to.emit(events, 'One').withArgs(1)
